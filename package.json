@@ -2,14 +2,18 @@
   "name": "promise-util",
   "version": "0.1.0",
   "private": true,
-  "main": "index.js",
+  "main": "dist/promise-util.js",
   "dependencies": {
+    "babel-jest": "^24.8.0",
+    "core-js": "^3.2.1",
+    "node-fetch": "^2.6.0",
+    "regenerator-runtime": "^0.13.3"
   },
   "scripts": {
-    "start": "react-scripts start",
     "build": "webpack",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build-w": "webpack --watch",
+    "test": "jest",
+    "test-w": "jest --watch"
   },
   "browserslist": {
     "production": [
@@ -24,7 +28,14 @@
     ]
   },
   "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/register": "^7.5.5",
+    "babel-loader": "^8.0.6",
     "install": "^0.13.0",
+    "jest": "^24.8.0",
     "npm": "^6.10.3",
     "webpack": "^4.39.1",
     "webpack-cli": "^3.3.6",

@@ -1,4 +1,7 @@
+import "core-js/stable";
+import "regenerator-runtime/runtime";
 import promiseWhen from '../promiseWhen';
+import fetch from "node-fetch";
 
 it('can test async', () => {
   expect.assertions(3);
@@ -63,9 +66,7 @@ it('can create PromisesAreMostlyDone', () => {
     }
     return false
   })
-  .then(()=> console.log("mostly done"))
   
   Promise.all(promises)
-  .then(()=> console.log("all done"))
   
 });
