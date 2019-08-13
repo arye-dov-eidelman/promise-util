@@ -1,6 +1,4 @@
 import promiseWhen from '../promiseWhen';
-import getState from '../getState';
-import getValue from '../getValue';
 
 it('can test async', () => {
   expect.assertions(3);
@@ -37,10 +35,17 @@ it('can create a race function', async () => {
     setTimeout(() => resolve("two"), 2);
   })
 
-  let race = states => [states.find(state => state !== "pending").index]
+  let race = eps => {
+    if (eps.findIndex(ep => ep.isSettled()) >= 0){
+      return [eps.findIndex(ep => ep.isSettled())]
+    }
+    return false
+  }
   
-  let eps = await promiseWhen([p1, p2], race)
-  expect(eps[0].value).toEqual("one")
+  await promiseWhen([p1, p2], race)
+  .then(eps => {
+    expect(eps[0].value).toEqual("one")
+  })
 });
 
 it('can create PromisesAreMostlyDone', () => {
